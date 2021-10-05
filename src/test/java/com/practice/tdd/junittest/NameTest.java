@@ -11,8 +11,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class NameTest {
 
     @Test
+    void create_name() {
+        Name name = new Name();
+
+        assertNotNull(name);
+        assertEquals(NameStatus.DRAFT, name.getStatus(), "default:: DRAFT");
+    }
+
+    @Test
     void create_name_test() {
-        System.out.println("create");
+        Name name = new Name();
+
+        assertAll(
+                ()->assertNotNull(name),
+                ()->assertEquals(NameStatus.DRAFT, name.getStatus(), "default:: DRAFT")
+        );
+        //assertNotNull(name);
+        //assertEquals(NameStatus.DRAFT, name.getStatus(), "default:: DRAFT");
     }
 
     @Test
