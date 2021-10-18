@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class TaggingTest {
 
     @Test
-    @Tag("fast")
+    @FastTest
     void create() {
         LessonOne lessonOne = new LessonOne();
         assertNotNull(lessonOne);
@@ -15,7 +15,6 @@ class TaggingTest {
     }
 
     @Test
-    @Tag("slow")
     void createOne() {
         System.out.println("createOne");
     }
