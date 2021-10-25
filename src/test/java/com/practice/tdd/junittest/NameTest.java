@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class) // 전체 적용
+//@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class) // 전체 적용
 @TestInstance(TestInstance.Lifecycle.PER_CLASS) // 클래스마다 인스턴스 생성, 즉 아래 테스트는 하나의 클래스 인스턴스를 공유한다.
 class NameTest {
 
