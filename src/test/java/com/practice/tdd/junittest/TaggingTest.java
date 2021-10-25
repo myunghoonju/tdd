@@ -15,6 +15,7 @@ import org.junit.jupiter.params.provider.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS) // 클래스마다 인스턴스 생성, 즉 아래 테스트는 하나의 클래스 인스턴스를 공유한다.
 class TaggingTest {
 
     @Test
@@ -90,8 +91,15 @@ class TaggingTest {
     }
 
 
+   /*
+   @TestInstance(TestInstance.Lifecycle.PER_CLASS) // 클래스마다 인스턴스 생성, 즉 아래 테스트는 하나의 클래스 인스턴스를 공유한다.
+   @BeforeAll
+    static void beforeAll() { // static 필요없다.
+        System.out.println("beforeAll");
+    }*/
+
     @BeforeAll
-    static void beforeAll() {
+    void beforeAll() {
         System.out.println("beforeAll");
     }
 
