@@ -1,4 +1,4 @@
-package com.practice.tdd.junittest;
+package com.practice.tdd.junit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

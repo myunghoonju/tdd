@@ -1,4 +1,4 @@
-package com.practice.tdd.junittest;
+package com.practice.tdd.junit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.practice.tdd.junittest;
+package com.practice.tdd.junit;
 
 public class Name {
 
