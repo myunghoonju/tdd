@@ -1,8 +1,8 @@
-package com.practice.tdd.Mock.study;
+package com.practice.tdd.mock.study;
 
-import com.practice.tdd.Mock.domain.Member;
-import com.practice.tdd.Mock.domain.Study;
-import com.practice.tdd.Mock.member.MemberService;
+import com.practice.tdd.mock.domain.Member;
+import com.practice.tdd.mock.domain.Study;
+import com.practice.tdd.mock.member.MemberService;
 
 import org.springframework.stereotype.Service;
 

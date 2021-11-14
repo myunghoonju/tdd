@@ -1,4 +1,4 @@
-package com.practice.tdd.Mock.domain;
+package com.practice.tdd.mock.domain;
 
 public enum StudyStatus {
     DRAFT, OPENED, STARTED, ENDED

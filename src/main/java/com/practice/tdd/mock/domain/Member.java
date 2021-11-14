@@ -1,4 +1,4 @@
-package com.practice.tdd.Mock.domain;
+package com.practice.tdd.mock.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

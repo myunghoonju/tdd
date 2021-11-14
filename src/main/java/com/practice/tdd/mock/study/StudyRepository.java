@@ -1,6 +1,6 @@
-package com.practice.tdd.Mock.study;
+package com.practice.tdd.mock.study;
 
-import com.practice.tdd.Mock.domain.Study;
+import com.practice.tdd.mock.domain.Study;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

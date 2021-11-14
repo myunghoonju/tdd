@@ -1,7 +1,7 @@
-package com.practice.tdd.Mock.study;
+package com.practice.tdd.mock.study;
 
 
-import com.practice.tdd.Mock.domain.Study;
+import com.practice.tdd.mock.domain.Study;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
