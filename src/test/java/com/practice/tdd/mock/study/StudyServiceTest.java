@@ -5,6 +5,7 @@ import com.practice.tdd.mock.domain.Study;
 import com.practice.tdd.mock.member.MemberService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -78,4 +79,27 @@ class StudyServiceTest {
         assertEquals(Optional.empty(), memberService.findById(1L));
     }
 
+    @Test
+    void createStudyThree() {
+        StudyService studyService = new StudyService(memberService, studyRepository);
+        Member member = new Member();
+        member.setId(1L);
+        member.setEmail("myunghoonju@gmail.com");
+
+        Study study = new Study(10, "java");
+
+        when(memberService.findById(any())).thenReturn(Optional.of(member));
+        when(studyRepository.save(study)).thenReturn(study);
+
+        studyService.createNewStudy(1L, study);
+
+        //how many times called?
+        verify(memberService, times(1)).notify(study);
+        verify(memberService, never()).validate(any());
+
+        //is method called in expected order?
+        InOrder inOrder = inOrder(memberService);
+        inOrder.verify(memberService).notify(study);
+        inOrder.verify(memberService).notify(member);
+    }
 }

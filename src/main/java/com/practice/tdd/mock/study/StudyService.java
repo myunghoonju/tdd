@@ -29,13 +29,13 @@ public class StudyService {
         }
         Study newstudy = studyRepository.save(study);
         memberService.notify(newstudy);
+        memberService.notify(member.get());
         return newstudy;
     }
 
     public Study openStudy(Study study) {
         study.open();
         Study openedStudy = studyRepository.save(study);
-        memberService.notify(openedStudy);
         return openedStudy;
     }
 
