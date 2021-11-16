@@ -13,6 +13,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 
 @ExtendWith(MockitoExtension.class)
 class StudyServiceTest {
@@ -101,5 +103,28 @@ class StudyServiceTest {
         InOrder inOrder = inOrder(memberService);
         inOrder.verify(memberService).notify(study);
         inOrder.verify(memberService).notify(member);
+    }
+
+    @Test
+    void bddTest() {
+        // given
+        StudyService studyService = new StudyService(memberService, studyRepository);
+        Member member = new Member();
+        member.setId(1L);
+        member.setEmail("myunghoonju@gmail.com");
+
+        Study study = new Study(10, "java");
+
+       /* when(memberService.findById(any())).thenReturn(Optional.of(member));
+        when(studyRepository.save(study)).thenReturn(study);*/
+        given(memberService.findById(any())).willReturn(Optional.of(member));
+        given(studyRepository.save(study)).willReturn(study);
+
+        //when
+        studyService.createNewStudy(1L, study);
+
+        //then
+        assertEquals(member.getId(), study.getOwnerId());
+        then(memberService).should(times(1)).notify(study);
     }
 }
