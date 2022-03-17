@@ -3,14 +3,19 @@ package com.practice.tdd.mock.study;
 import com.practice.tdd.mock.domain.Member;
 import com.practice.tdd.mock.domain.Study;
 import com.practice.tdd.mock.member.MemberService;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.BDDMockito.given;
@@ -126,5 +131,38 @@ class StudyServiceTest {
         //then
         assertEquals(member.getId(), study.getOwnerId());
         then(memberService).should(times(1)).notify(study);
+    }
+
+    @Test
+    void spyingList() {
+        List<String> list = new ArrayList<>();
+        List<String> spyList = spy(list);
+
+        spyList.add("one");
+        spyList.add("two");
+
+        verify(spyList).add("one");
+        verify(spyList).add("two");
+
+        assertThat(spyList.size()).isEqualTo(2);
+    }
+
+    @Test
+    void spyingList2() {
+        List<String> list = new ArrayList<>();
+        List<String> spyList = spy(list);
+
+        assertThat(spyList.size()).isEqualTo(0);
+
+        doReturn(2).when(spyList).size();
+        assertThat(spyList.size()).isEqualTo(2);
+    }
+
+    @Test
+    void spyingTest3() {
+        List<String> spyList = spy(new ArrayList<>());
+        doReturn(2).when(spyList).size();
+
+        assertThat(spyList.size()).isGreaterThanOrEqualTo(2);
     }
 }
